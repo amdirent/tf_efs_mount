@@ -20,11 +20,7 @@ resource "aws_security_group" "ec2" {
   name        = "${var.name}-ec2"
   description = "Allow traffic out to NFS for ${var.name}-mnt."
   vpc_id      = "${var.vpc_id}"
-
-  tags {
-    Name = "allow_nfs_out_to_${var.name}-mnt"
-    terraform = "true"
-  }
+  tags = "${merge("${var.tags}",map("Name", "allow_nfs_out_to_${var.name}-mnt", "terraform", "true"))}"
 }
 
 resource "aws_security_group_rule" "nfs-out" {
@@ -40,11 +36,7 @@ resource "aws_security_group" "mnt" {
   name        = "${var.name}-mnt"
   description = "Allow traffic from instances using ${var.name}-ec2."
   vpc_id      = "${var.vpc_id}"
-
-  tags {
-    Name = "allow_nfs_in_from_${var.name}-ec2"
-    terraform = "true"
-  }
+  tags = "${merge("${var.tags}",map("Name", "allow_nfs_in_from_${var.name}-ec2", "terraform", "true"))}"
 }
 
 resource "aws_security_group_rule" "nfs-in" {
