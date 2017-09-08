@@ -12,3 +12,11 @@ variable "vpc_id" {
   type = "string"
   description = "(Required) The VPC ID where NFS security groups will be."
 }
+
+
+variable "tags" {
+  type        = "map"
+  description = "Optional Tags"
+  default     = {}
+}
+
