@@ -5,12 +5,7 @@ resource "random_id" "creation_token" {
 
 resource "aws_efs_file_system" "efs" {
   creation_token = "${random_id.creation_token.hex}"
-
-  tags {
-    Name = "${var.name}"
-    CreationToken = "${random_id.creation_token.hex}"
-    terraform = "true"
-  }
+  tags = "${merge("${var.tags}",map("Name", "${var.name}", "CreationToken", "${random_id.creation_token.hex}", "terraform", "true"))}"
 }
 
 resource "aws_efs_mount_target" "efs" {
