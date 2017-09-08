@@ -7,7 +7,7 @@ output "file_system_id" {
 }
 
 output "mount_target_dnses" {
-  value = "${join(",", aws_efs_mount_target.*.dns_name)}"  
+  value = "${join(",", aws_efs_mount_target.efs.*.dns_name)}"  
 }
 output "mount_target_ids" {
   value = "${join(",", aws_efs_mount_target.efs.*.id)}"
