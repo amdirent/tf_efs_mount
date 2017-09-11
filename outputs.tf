@@ -13,6 +13,10 @@ output "mount_target_ids" {
   value = "${join(",", aws_efs_mount_target.efs.*.id)}"
 }
 
+output "mount_target_ips" {
+  value = "${join(",", aws_efs_mount_target.efs.*.ip_address)}"
+}
+
 output "mount_target_interface_ids" {
   value = "${join(",", aws_efs_mount_target.efs.*.network_interface_id)}"
 }
