@@ -17,6 +17,10 @@ output "mount_target_ips" {
   value = "${join(",", aws_efs_mount_target.efs.*.ip_address)}"
 }
 
+output "mount_target_subnets" {
+  value = "${join(",", aws_efs_mount_target.efs.*.subnet_id)}"
+}
+
 output "mount_target_interface_ids" {
   value = "${join(",", aws_efs_mount_target.efs.*.network_interface_id)}"
 }
