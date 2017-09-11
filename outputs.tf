@@ -26,7 +26,7 @@ output "mount_target_interface_ids" {
 }
 
 output "num_mount_target_ids" {
-   value = "${length(aws_efs_mount_target.efs)}"
+   value = "${length(aws_efs_mount_target.efs.*)}"
   }
 
 output "ec2_security_group_id" {
